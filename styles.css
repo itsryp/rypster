@@ -13,7 +13,6 @@ body {
     margin: 0;
     min-width: 100vw;
     color: black;
-    transition: background-color .25s ease, color .25s ease;
     font-family: monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -48,6 +47,10 @@ body.dark-mode {
    0 0 / 20px 20px;
 }
 
+body * {
+    color: var(--text);
+}
+
 body.dark-mode * {
     color: var(--dark-text);
 }
@@ -67,8 +70,6 @@ main {
     flex-direction: column;
     border: 2px solid #00000030;
     background-color: white;
-    /* transition: border .25s ease, width .25s ease, height .25s ease; */
-    transition: all .25s ease;
     padding: .5em;
     border-radius: 12px;
     width: 100%;
@@ -103,7 +104,7 @@ main {
     border-radius: 6px;
     -webkit-user-drag: none;
     object-view-box: inset(0 0 0 0);
-    transition: all .25s ease;
+    transition: object-view-box .25s ease;
 }
 
 .profile img:hover {
@@ -114,11 +115,6 @@ main {
 .profile .greetings {
     /* white-space: nowrap; */
     margin: 0;
-}
-
-a {
-    color:  black;
-    transition: background-color .25s ease, color .25s ease;
 }
 
 .cards {
@@ -175,8 +171,7 @@ a {
     margin-bottom: 10px;
     border: 2px solid #00000030;
     background-color: white;
-    /* transition: border .25s ease, width .25s ease, height .25s ease; */
-    transition: all .25s ease;
+    transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease, scale .25s ease;
     padding: .5em;
     border-radius: 12px;
     transform: none;
@@ -199,15 +194,15 @@ a {
     border-color: var(--dark-highlight);
 }
 
-.cards .card h3 {
+.card h3 {
     margin: 0;
 }
 
-.cards .card .content {
-    transition: all .25s ease;
+.card .content {
+    transition: filter .25s ease, opacity .25s ease;
 }
 
-.cards .card:hover .content {
+.card:hover .content {
     filter: blur(0);
     opacity: 1;
 }
