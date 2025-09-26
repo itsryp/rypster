@@ -1,8 +1,8 @@
 body {
     margin: 0;
     min-width: 100vw;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     transition: background-color .25s ease, color .25s ease;
     font-family: monospace;
     -webkit-font-smoothing: antialiased;
@@ -10,6 +10,18 @@ body {
     text-rendering: optimizeLegibility;
     user-select: none;
     justify-items: center;
+
+    --d: 2px; 
+   
+   background : radial-gradient(
+     circle at 
+        var(--d) 
+        var(--d), 
+        
+     #00000030 calc(var(--d) - 1px), 
+     #0000 var(--d)
+   ) 
+   0 0 / 20px 20px;
 }
 
 .theme-toggle {
@@ -20,11 +32,6 @@ body {
     border: 0;
     font-size: xx-large;
     background-color: transparent;
-}
-
-.light-mode {
-    background-color: white;
-    color: black;
 }
 
 main {
@@ -87,11 +94,8 @@ main {
 }
 
 a {
-    color:  white;
+    color:  black;
     transition: background-color .25s ease, color .25s ease;
-}
-.light-mode a {
-    color: black;
 }
 
 .cards {
