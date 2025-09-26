@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    min-width: 100vw;
+    background-color: black;
+    color: white;
+    transition: background-color .25s ease, color .25s ease;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: monospace;
+    /* filter: grayscale(); */
+    user-select: none;
+    justify-items: center;
+}
+
+.theme-toggle {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    aspect-ratio: 1;
+    border: 0;
+    font-size: xx-large;
+    background-color: transparent;
+}
+
+.light-mode {
+    background-color: white;
+    color: black;
+}
+
+main {
+    padding: 5%;
+    max-width: 600px;
+}
+
+a {
+    color:  white;
+    transition: background-color .25s ease, color .25s ease;
+}
+.light-mode a {
+    color: black;
+}
+
+.about-me {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 .5em;
+}
+
+.about-me:hover .card:not(:hover) {
+    /* filter: blur(2px); */
+    opacity: .5;
+}
+
+.about-me .card {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid #00000030;
+    background-color: white;
+    /* transition: border .25s ease, width .25s ease, height .25s ease; */
+    transition: all .25s ease;
+    padding: .5em;
+    border-radius: 12px;
+}
+
+.about-me .card:hover {
+    border: 2px solid #000000aa;
+    scale: 1.02;
+    transform: translateY(-10px);
+    box-shadow: 0 5px 0 5px #00000030;
+}
+
+/* .light-mode .about-me .card {
+    border: 2px solid #00000030;
+} */
+
+.about-me .card h3 {
+    margin: 0;
+}
+
+.about-me .card .content {
+    filter: blur(2px);
+    opacity: .5;
+    /* mask-image: linear-gradient(white, transparent); */
+    transition: all .25s ease;
+    pointer-events: none;
+}
+
+.about-me .card:hover .content {
+    filter: blur(0);
+    opacity: 1;
+    pointer-events: all;
+    /* mask-image: linear-gradient(white, white); */
+}
+
+button {
+    border-radius: .5em;
+    border: 2px solid #00000030;
+    padding: .5em;
+    background-color: white;
+    font-family: monospace;
+    color: black;
+    transition: all .25s ease;
+}
+
+button:hover {
+    scale: 1.1;
+    border: 2px solid #000000aa;
+}
