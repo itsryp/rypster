@@ -4,9 +4,10 @@ body {
     background-color: black;
     color: white;
     transition: background-color .25s ease, color .25s ease;
-    /* font-family: 'Courier New', Courier, monospace; */
     font-family: monospace;
-    /* filter: grayscale(); */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     user-select: none;
     justify-items: center;
 }
@@ -27,8 +28,62 @@ body {
 }
 
 main {
-    padding: 5%;
+    /* padding: 5%; */
+    position: fixed;
+    top: 50%;
+    translate: 0 -50%;
     max-width: 600px;
+    display: flex;
+    gap: 5px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #00000030;
+    background-color: white;
+    /* transition: border .25s ease, width .25s ease, height .25s ease; */
+    transition: all .25s ease;
+    padding: .5em;
+    border-radius: 12px;
+    width: 100%;
+    aspect-ratio: 1;
+    justify-items: left;
+}
+
+.profile .name {
+    position: absolute;
+    top: -.5em;
+    translate: 0 -100%;
+    display: flex;
+}
+
+.profile .name h1 {
+    margin: 0;
+    font-style: italic;
+}
+
+.profile .name h1.transparent {
+    opacity: .25;
+}
+
+.profile img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    -webkit-user-drag: none;
+    object-view-box: inset(0 0 0 0);
+    transition: all .25s ease;
+}
+
+.profile img:hover {
+    /* scale: 1.1; */
+    object-view-box: inset(5%);
+}
+
+.profile .greetings {
+    /* white-space: nowrap; */
+    margin: 0;
 }
 
 a {
@@ -39,20 +94,56 @@ a {
     color: black;
 }
 
-.about-me {
+.cards {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
     padding: 0 .5em;
+    justify-content: space-between;
 }
 
-.about-me:hover .card:not(:hover) {
-    /* filter: blur(2px); */
+.cards .card:last-child {
+    margin-bottom: 0;
+}
+
+.cards .card:not(:hover) .content {
+    filter: blur(2px);
     opacity: .5;
 }
+.cards .card:not(:hover):after {
+    content: "hover me";
+    position: absolute;
+    background-color: transparent;
+    top: 50%;
+    left: 50%;
+    translate: -50%;
+    pointer-events: none;
+    animation: fadein 1s, bounce 1s infinite;
+}
 
-.about-me .card {
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+.cards .card {
     width: 100%;
     margin-bottom: 10px;
     border: 2px solid #00000030;
@@ -61,36 +152,32 @@ a {
     transition: all .25s ease;
     padding: .5em;
     border-radius: 12px;
+    transform: none;
+    scale: 1;
 }
 
-.about-me .card:hover {
+.cards .card:hover {
     border: 2px solid #000000aa;
     scale: 1.02;
     transform: translateY(-10px);
     box-shadow: 0 5px 0 5px #00000030;
 }
 
-/* .light-mode .about-me .card {
+/* .light-mode .cards .card {
     border: 2px solid #00000030;
 } */
 
-.about-me .card h3 {
+.cards .card h3 {
     margin: 0;
 }
 
-.about-me .card .content {
-    filter: blur(2px);
-    opacity: .5;
-    /* mask-image: linear-gradient(white, transparent); */
+.cards .card .content {
     transition: all .25s ease;
-    pointer-events: none;
 }
 
-.about-me .card:hover .content {
+.cards .card:hover .content {
     filter: blur(0);
     opacity: 1;
-    pointer-events: all;
-    /* mask-image: linear-gradient(white, white); */
 }
 
 button {
