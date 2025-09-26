@@ -5,27 +5,25 @@
 
 addEventListener("load",() => {
     const title = document.querySelector(".title");
-    const greetings = document.querySelector(".greetings");
+    const greetElement = document.querySelector(".greetings");
     var date = new Date();
     var time = date.getHours();
-    const timeofday = time >= 0 && time < 12 ? "morning" : time >= 12 && time < 18 ? "afternoon" : time >= 18 ? "evening" : "";
-    // title.innerHTML = timeofday;
-    greetings.innerHTML = `Good ${timeofday}!👋`;
-    // if (time >= 0 && time < 12) {
-    //     title.innerHTML = "☀️ Morning";
-    //     greetings.innerHTML = "☀️Morning,<br>I'm ryp 👋";
-    //     // switchTheme();
-    // } else if (time >= 12 && time < 18) {
-    //     title.innerHTML = "🌤️ Afternoon";
-    //     greetings.innerHTML = "🌤️Afternoon,<br>I'm ryp 👋";
-    //     // switchTheme();
-    // } else if (time >= 18) {
-    //     title.innerHTML = "🌙 Evening";
-    //     greetings.innerHTML = "🌙 Evening,<br>I'm ryp 👋";
-    // }
-
-    // console.log(lightmode);
-    // setTheme(lightmode);
+    let greetings;
+    if (time >= 5 && time < 12) {
+        greetings = "Good morning!☕";
+    } else if (time >= 12 && time < 18) {
+        greetings = "Good afternoon!🌤️";
+    } else if (time >= 18 && time < 21) {
+        greetings = "Good evening!🌙";
+        document.body.classList.add("dark-mode");
+    } else if (time >= 21 && time < 24) {
+        greetings = "Good night!🥱";
+        document.body.classList.add("dark-mode");
+    } else if (time < 5) {
+        greetings = "You're still up?😴";
+        document.body.classList.add("dark-mode");
+    }
+    greetElement.innerHTML = greetings;
 })
 
 function copyemail(e) {

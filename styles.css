@@ -1,7 +1,17 @@
+:root {
+    --text: #000000;
+    --bg: #fff;
+    --accent: #00000030;
+    --highlight: #000000aa;
+    --dark-text: #ffffff;
+    --dark-bg: #101010;
+    --dark-accent: #303030;
+    --dark-highlight: #aaaaaa;
+}
+
 body {
     margin: 0;
     min-width: 100vw;
-    background-color: white;
     color: black;
     transition: background-color .25s ease, color .25s ease;
     font-family: monospace;
@@ -19,19 +29,27 @@ body {
         var(--d), 
         
      #00000030 calc(var(--d) - 1px), 
-     #0000 var(--d)
+     #fff var(--d)
    ) 
    0 0 / 20px 20px;
 }
 
-.theme-toggle {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    aspect-ratio: 1;
-    border: 0;
-    font-size: xx-large;
-    background-color: transparent;
+body.dark-mode {
+     --d: 2px; 
+   
+   background : radial-gradient(
+     circle at 
+        var(--d) 
+        var(--d), 
+        
+     #303030 calc(var(--d) - 1px), 
+     #101010 var(--d)
+   )
+   0 0 / 20px 20px;
+}
+
+body.dark-mode * {
+    color: var(--dark-text);
 }
 
 main {
@@ -56,6 +74,11 @@ main {
     width: 100%;
     aspect-ratio: 1;
     justify-items: left;
+}
+
+.dark-mode .profile {
+    background-color: var(--dark-bg);
+    border-color: var(--dark-accent);
 }
 
 .profile .name {
@@ -160,16 +183,21 @@ a {
     scale: 1;
 }
 
-.cards .card:hover {
-    border: 2px solid #000000aa;
+.dark-mode .card {
+    background-color: var(--dark-bg);
+    border-color: var(--dark-accent);
+}
+
+.card:hover {
+    border-color: var(--highlight);
     scale: 1.02;
     transform: translateY(-10px);
     box-shadow: 0 5px 0 5px #00000030;
 }
 
-/* .light-mode .cards .card {
-    border: 2px solid #00000030;
-} */
+.dark-mode .card:hover {
+    border-color: var(--dark-highlight);
+}
 
 .cards .card h3 {
     margin: 0;
@@ -197,4 +225,8 @@ button {
 button:hover {
     scale: 1.1;
     border: 2px solid #000000aa;
+}
+
+.dark-mode #dark-mode-button {
+    display: none;
 }
