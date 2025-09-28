@@ -19,6 +19,9 @@ addEventListener("load",() => {
         document.body.classList.add("dark-mode");
     }
     greetElement.innerHTML = greetings;
+
+    let year = date.getFullYear();
+    document.querySelector(".profile #bio").innerHTML = `${year-2007} y/o developer from canada`;
 })
 
 function copyemail(e) {
